@@ -6,3 +6,11 @@ body {
   font: var(--font-m);
   font-weight: 400;
 }
+
+.page-wrapper {
+  width: 1200px;
+  margin: 0 auto 0;
+  padding: 20px 40px 20px;
+  box-sizing: content-box;
+  background-color: #fff;
+}

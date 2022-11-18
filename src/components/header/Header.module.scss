@@ -1,5 +1,20 @@
 .Header {
+  display: flex;
+  align-items: flex-start;
+  padding: 40px;
   height: var(--header-height);
   background: black;
   width: 100%;
+
+  .logoTitle {
+    font-weight: 600;
+    font-size: 40px;
+    color: white;
+    margin-left: 50px;
+  }
+
+  .btn {
+    margin-left: auto;
+    color: white;
+  }
 }

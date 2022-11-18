@@ -8,7 +8,7 @@ export const fetchPosts = createAsyncThunk<Post[], void, { rejectValue: string }
     'posts/fetchPosts',
     async (_, { rejectWithValue }) => {
         try {
-            const { data } = await instance.get('/posts');
+            const { data } = await instance.get<Post[]>('/posts');
 
             if (!data) {
                 throw new Error('Не удалось получить статьи');

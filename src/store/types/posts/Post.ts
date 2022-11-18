@@ -5,7 +5,7 @@ interface NestedObject {
 export interface Post {
     id: number;
     date: string;
-    link: string;
+    guid: NestedObject;
     title: NestedObject;
     excerpt: NestedObject;
 }

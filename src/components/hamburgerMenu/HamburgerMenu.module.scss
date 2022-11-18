@@ -1,0 +1,38 @@
+.HamburgerMenu {
+  .menuBtn {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    > span,
+    > span::before,
+    > span::after {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #fcfbfb;
+    }
+
+    > span::before {
+      content: '';
+      top: -8px;
+    }
+
+    > span::after {
+      content: '';
+      top: 8px;
+    }
+
+  }
+}

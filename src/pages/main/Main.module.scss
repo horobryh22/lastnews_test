@@ -1,3 +1,50 @@
 .Main {
+  display: flex;
+  flex-direction: column;
+
+
+  .btn {
+    width: 200px;
+    margin: 0 auto;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 20px;
+      right: -420px;
+      width: 400px;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 20px;
+      right: 220px;
+      width: 400px;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .title {
+    font: var(--font-l);
+    font-weight: 600;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 300px;
+      position: absolute;
+      top: 45px;
+      background: red;
+    }
+  }
 
 }
