@@ -1,15 +1,15 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 
 import { AppRouter } from '../appRouter';
 
+import { Header } from 'components';
 import { ReturnComponentType } from 'types';
 
 const App = (): ReturnComponentType => {
     return (
         <div>
-            <Suspense fallback="">
-                <AppRouter />
-            </Suspense>
+            <Header />
+            <AppRouter />
         </div>
     );
 };

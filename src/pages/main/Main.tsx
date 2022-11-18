@@ -6,5 +6,5 @@ import { ReturnComponentType } from 'types';
 import { classNames } from 'utils';
 
 export const Main = memo((): ReturnComponentType => {
-    return <div className={classNames(classes.Main, {}, [])}>MainPage</div>;
+    return <div className={classNames(classes.Main, {}, [])}>Главная страница</div>;
 });

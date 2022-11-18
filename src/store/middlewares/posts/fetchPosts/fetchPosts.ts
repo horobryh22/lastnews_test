@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { Post } from '../../../types';
+
 import { instance } from 'api';
-import { Post } from 'types';
 
 export const fetchPosts = createAsyncThunk<Post[], void, { rejectValue: string }>(
     'posts/fetchPosts',
