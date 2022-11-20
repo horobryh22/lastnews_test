@@ -1,18 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { fetchPosts } from '../../middlewares';
 import { PostsStateSchema } from '../../types';
+
+import { PostsView } from 'enums';
 
 const initialState: PostsStateSchema = {
     posts: undefined,
     error: undefined,
     isLoading: false,
+    view: PostsView.TILE,
 };
 
 export const postsSlice = createSlice({
     name: 'posts',
     initialState,
-    reducers: {},
+    reducers: {
+        setPostsView: (state, action: PayloadAction<PostsView>) => {
+            state.view = action.payload;
+        },
+    },
     extraReducers: builder =>
         builder
             .addCase(fetchPosts.rejected, (state, action) => {

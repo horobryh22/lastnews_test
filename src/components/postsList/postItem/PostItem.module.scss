@@ -1,4 +1,5 @@
-.PostItem {
+.tile,
+.PostItemSkeleton.tile {
   padding: 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   width: 260px;
@@ -22,4 +23,46 @@
     font-weight: 300;
     font-size: 13px;
   }
+}
+
+.PostItemSkeleton.tile {
+  height: 160px;
+  border: 1px solid rgba(0, 0, 0, 0.13);
+
+  .postTitle {
+    margin-bottom: 10px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  padding: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  width: 100%;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .postTitle {
+      font-weight: 400;
+      text-decoration: none;
+      color: #292929;
+    }
+  }
+
+  .btn {
+    width: 200px;
+    margin: 20px 0 0 auto;
+  }
+}
+
+.PostItemSkeleton.list {
+  padding: 0;
+  border-bottom: none;
+
 }

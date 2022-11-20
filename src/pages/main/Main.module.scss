@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
 
+  .view {
+    margin-left: auto;
+  }
+
 
   .btn {
     width: 200px;

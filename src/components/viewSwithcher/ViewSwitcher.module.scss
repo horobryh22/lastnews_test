@@ -1,0 +1,27 @@
+.ViewSwitcher {
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .tile,
+  .list {
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    transition: 0.2s;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .active {
+    background: rgba(41, 41, 41, 0.16);
+  }
+}
+
+

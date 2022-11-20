@@ -2,7 +2,7 @@ import { memo, useEffect } from 'react';
 
 import classes from './Main.module.scss';
 
-import { Button, ButtonTheme, PostsList } from 'components';
+import { Button, ButtonTheme, PostsList, ViewSwitcher } from 'components';
 import { useAppDispatch, useTypedSelector } from 'hooks';
 import { fetchPosts } from 'store/middlewares';
 import { selectPosts } from 'store/selectors';
@@ -21,6 +21,7 @@ export const Main = memo((): ReturnComponentType => {
     return (
         <div className={classNames(classes.Main, {}, [])}>
             <h2 className={classes.title}>Главные новости</h2>
+            <ViewSwitcher className={classes.view} />
             <PostsList posts={posts} />
             <Button className={classes.btn} theme={ButtonTheme.OUTLINE}>
                 Все новости
