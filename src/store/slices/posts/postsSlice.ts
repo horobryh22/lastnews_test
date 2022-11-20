@@ -10,6 +10,7 @@ const initialState: PostsStateSchema = {
     posts: undefined,
     error: undefined,
     isLoading: false,
+    shownPostsCount: 8,
     view: PostsView.TILE,
 };
 
@@ -17,6 +18,9 @@ export const postsSlice = createSlice({
     name: 'posts',
     initialState,
     reducers: {
+        increaseShownPostsCount: state => {
+            state.shownPostsCount += 4;
+        },
         setPostsView: (state, action: PayloadAction<PostsView>) => {
             state.view = action.payload;
         },

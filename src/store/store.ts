@@ -1,32 +1,30 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
-    persistStore,
-    persistReducer,
     FLUSH,
-    REHYDRATE,
     PAUSE,
     PERSIST,
+    persistReducer,
+    persistStore,
     PURGE,
     REGISTER,
+    REHYDRATE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import { postsReducer } from 'store/slices';
 
-const rootReducer = combineReducers({
-    posts: postsReducer,
-});
-
-const persistConfig = {
-    key: 'root',
+const postsConfig = {
+    key: 'posts',
     storage,
-    whitelist: ['posts'],
+    whitelist: ['view'],
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const rootReducer = combineReducers({
+    posts: persistReducer(postsConfig, postsReducer),
+});
 
 export const store = configureStore({
-    reducer: persistedReducer,
+    reducer: rootReducer,
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
             serializableCheck: {

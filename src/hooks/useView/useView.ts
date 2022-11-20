@@ -1,8 +1,7 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import { PostsView } from 'enums';
-import { useAppDispatch } from 'hooks/useAppDispatch/useAppDispatch';
-import { useTypedSelector } from 'hooks/useTypedSelector/useTypedSelector';
+import { useAppDispatch, useTypedSelector } from 'hooks';
 import { selectPostsView } from 'store/selectors';
 import { postsActions } from 'store/slices';
 
@@ -23,5 +22,7 @@ export const useView = (): UseViewResult => {
         }
     }, [dispatch, view]);
 
-    return [view, toggleView];
+    return useMemo(() => {
+        return [view, toggleView];
+    }, [toggleView, view]);
 };

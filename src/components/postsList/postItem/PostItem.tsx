@@ -15,6 +15,7 @@ interface PostItemProps {
 
 export const PostItem = memo((props: PostItemProps): ReactElement => {
     const { className, post, view = PostsView.TILE } = props;
+
     const date = new Date(post.date).toLocaleTimeString().slice(0, -3);
     const title = post.title.rendered.replace(new RegExp(/&#\d{3,4};/gi), '');
 

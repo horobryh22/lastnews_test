@@ -6,13 +6,11 @@ import classes from './PostsList.module.scss';
 
 import { PostsView } from 'enums';
 import { useTypedSelector } from 'hooks';
-import { selectPostsIsLoading, selectPostsView } from 'store/selectors';
-import { Post } from 'store/types';
+import { selectPartPosts, selectPostsIsLoading, selectPostsView } from 'store/selectors';
 import { classNames } from 'utils';
 
 interface PostsListProps {
     className?: string;
-    posts: Post[];
 }
 
 const getSkeletons = (view: PostsView): ReactElement[] =>
@@ -21,8 +19,9 @@ const getSkeletons = (view: PostsView): ReactElement[] =>
         .map((item, i) => <PostItemSkeleton key={i} view={view} />);
 
 export const PostsList = memo((props: PostsListProps): ReactElement => {
-    const { className, posts } = props;
+    const { className } = props;
 
+    const posts = useTypedSelector(selectPartPosts);
     const isLoading = useTypedSelector(selectPostsIsLoading);
     const view = useTypedSelector(selectPostsView);
 

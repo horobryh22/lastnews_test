@@ -1,31 +1,42 @@
-import { memo, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 
 import classes from './Main.module.scss';
 
 import { Button, ButtonTheme, PostsList, ViewSwitcher } from 'components';
 import { useAppDispatch, useTypedSelector } from 'hooks';
 import { fetchPosts } from 'store/middlewares';
-import { selectPosts } from 'store/selectors';
+import { selectShownPostsCount } from 'store/selectors';
+import { postsActions } from 'store/slices';
 import { ReturnComponentType } from 'types';
 import { classNames } from 'utils';
 
 export const Main = memo((): ReturnComponentType => {
     const dispatch = useAppDispatch();
 
-    const posts = useTypedSelector(selectPosts);
+    const shownPostsCount = useTypedSelector(selectShownPostsCount);
 
     useEffect(() => {
         dispatch(fetchPosts());
+    }, [dispatch]);
+
+    const onShowMore = useCallback(() => {
+        dispatch(postsActions.increaseShownPostsCount());
     }, [dispatch]);
 
     return (
         <div className={classNames(classes.Main, {}, [])}>
             <h2 className={classes.title}>Главные новости</h2>
             <ViewSwitcher className={classes.view} />
-            <PostsList posts={posts} />
-            <Button className={classes.btn} theme={ButtonTheme.OUTLINE}>
-                Все новости
-            </Button>
+            <PostsList />
+            {shownPostsCount < 10 && (
+                <Button
+                    className={classes.btn}
+                    theme={ButtonTheme.OUTLINE}
+                    onClick={onShowMore}
+                >
+                    Больше новостей
+                </Button>
+            )}
         </div>
     );
 });
