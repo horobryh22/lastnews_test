@@ -5,9 +5,7 @@ import classes from './ViewSwitcher.module.scss';
 import ListIcon from 'assets/image/list.svg';
 import TileIcon from 'assets/image/tile.svg';
 import { PostsView } from 'enums';
-import { useAppDispatch, useTypedSelector } from 'hooks';
-import { selectPostsView } from 'store/selectors';
-import { postsActions } from 'store/slices';
+import { useView } from 'hooks';
 import { classNames } from 'utils';
 
 interface ViewSwitcherProps {
@@ -17,22 +15,12 @@ interface ViewSwitcherProps {
 export const ViewSwitcher = memo((props: ViewSwitcherProps): ReactElement => {
     const { className } = props;
 
-    const dispatch = useAppDispatch();
-
-    const view = useTypedSelector(selectPostsView);
-
-    const changePostsView = (): void => {
-        dispatch(
-            postsActions.setPostsView(
-                view === PostsView.LIST ? PostsView.TILE : PostsView.LIST,
-            ),
-        );
-    };
+    const [view, toggleView] = useView();
 
     return (
         <div className={classNames(classes.ViewSwitcher, {}, [className])}>
             <div
-                onClick={changePostsView}
+                onClick={toggleView}
                 className={classNames(
                     classes.tile,
                     { [classes['active']]: view === PostsView.TILE },
@@ -42,7 +30,7 @@ export const ViewSwitcher = memo((props: ViewSwitcherProps): ReactElement => {
                 <img src={TileIcon} alt="tile" />
             </div>
             <div
-                onClick={changePostsView}
+                onClick={toggleView}
                 className={classNames(
                     classes.list,
                     { [classes['active']]: view === PostsView.LIST },

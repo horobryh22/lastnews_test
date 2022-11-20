@@ -6,7 +6,7 @@ import classes from './PostsList.module.scss';
 
 import { PostsView } from 'enums';
 import { useTypedSelector } from 'hooks';
-import { selectPostsIsLoading } from 'store/selectors';
+import { selectPostsIsLoading, selectPostsView } from 'store/selectors';
 import { Post } from 'store/types';
 import { classNames } from 'utils';
 
@@ -24,7 +24,7 @@ export const PostsList = memo((props: PostsListProps): ReactElement => {
     const { className, posts } = props;
 
     const isLoading = useTypedSelector(selectPostsIsLoading);
-    const view = PostsView.LIST;
+    const view = useTypedSelector(selectPostsView);
 
     const mappedPosts = posts.map(post => (
         <PostItem key={post.id} post={post} view={view} />
